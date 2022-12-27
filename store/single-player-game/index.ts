@@ -12,7 +12,7 @@ export const useSPGameStore = create<SPGameStore>()((set, get) => ({
   timeLimit: 3,
   timeLeft: get()?.timeLimit | 3,
   validateWordCorrectness: (word: string) => {
-    if (word === get().words[0]) {
+    if (word.toLowerCase() === get().words[0]) {
       resetTimer();
       incrementCurrentScore();
       generateNewWord();
