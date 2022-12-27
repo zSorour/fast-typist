@@ -1,3 +1,31 @@
+html {
+  font-size: 12px;
+}
+
+@screen md {
+  html {
+    font-size: 14px;
+  }
+}
+
+@screen lg {
+  html {
+    font-size: 16px;
+  }
+}
+
+@screen xl {
+  html {
+    font-size: 18px;
+  }
+}
+
+@screen 2xl {
+  html {
+    font-size: 20px;
+  }
+}
+
 body,
 #__next {
   min-height: 100vh;

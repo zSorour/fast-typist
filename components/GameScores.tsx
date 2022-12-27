@@ -5,7 +5,7 @@ const GameScores = () => {
   const personalTopScore = useSPGameStore((state) => state.personalTopScore);
 
   return (
-    <table className="text-center table-fixed w-[100%] rounded-lg overflow-hidden bg-secondary border-collapse">
+    <table className="text-center table-fixed w-[100%] rounded-lg overflow-hidden bg-secondary border-collapse md:w-[65%] md:mx-auto">
       <thead>
         <tr className="bg-emerald-600">
           <th className="py-3">Current</th>
