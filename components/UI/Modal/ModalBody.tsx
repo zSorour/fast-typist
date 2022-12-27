@@ -4,7 +4,7 @@ type Props = {
 
 const ModalBody = (props: Props) => {
   return (
-    <div className="flex flex-col items-center justify-center p-10 gap-5">
+    <div className="flex flex-col items-center justify-center p-5 gap-5">
       {props.children}
     </div>
   );
