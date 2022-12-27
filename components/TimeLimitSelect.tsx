@@ -4,16 +4,20 @@ import { useSPGameStore } from 'store/single-player-game';
 const TimeLimitSelect = () => {
   const timeLimit = useSPGameStore((state) => state.timeLimit);
   const setTimeLimit = useSPGameStore((state) => state.setTimeLimit);
+  const gameStatus = useSPGameStore((state) => state.gameStatus);
 
   const onSelectHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setTimeLimit(Number(e.target.value));
   };
 
+  console.log(gameStatus);
+
   return (
     <select
-      className="form-select font-bold bg-secondary py-2 px-3 rounded-lg w-full hover:cursor-pointer"
+      className="form-select font-bold bg-secondary py-2 px-3 rounded-lg w-full hover:cursor-pointer disabled:cursor-not-allowed"
       value={timeLimit}
       onChange={onSelectHandler}
+      disabled={gameStatus !== 'idle'}
     >
       <option value={1}>1 Second</option>
       <option value={2}>2 Second</option>
