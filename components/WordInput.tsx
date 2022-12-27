@@ -28,7 +28,7 @@ const WordInput = () => {
 
   return (
     <input
-      className="bg-emerald-600 font-bold text-2xl p-4 text-center rounded-lg h-10 w-full focus:outline-none disabled:bg-gray-800 disabled:cursor-not-allowed"
+      className="form-input bg-emerald-600 font-bold text-2xl p-4 text-center rounded-lg h-10 w-full focus:outline-none disabled:bg-gray-800 disabled:cursor-not-allowed"
       type="text"
       value={userInput}
       onChange={onInputChangeHandler}

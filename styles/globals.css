@@ -57,3 +57,18 @@ body,
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[type='text'],
+[type='password'],
+select {
+  background: #3f3f3f;
+  border: none;
+}
+
+[type='text']:focus,
+[type='password']:focus,
+.form-select:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}

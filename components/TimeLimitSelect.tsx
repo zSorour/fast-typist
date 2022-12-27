@@ -11,7 +11,7 @@ const TimeLimitSelect = () => {
 
   return (
     <select
-      className="font-bold bg-secondary py-2 px-3 rounded-lg w-full hover:cursor-pointer focus:outline-none"
+      className="form-select font-bold bg-secondary py-2 px-3 rounded-lg w-full hover:cursor-pointer"
       value={timeLimit}
       onChange={onSelectHandler}
     >
