@@ -5,7 +5,7 @@ const Words = () => {
   const words = useSPGameStore((state) => state.words);
 
   return (
-    <div className="flex flex-col items-center bg-secondary p-4 rounded-lg overflow-hidden w-full h-24">
+    <div className="flex flex-col items-center bg-secondary p-4 rounded-lg overflow-hidden w-full h-[6.5rem]">
       {words.map((w) => (
         <Word word={w} key={w} />
       ))}
