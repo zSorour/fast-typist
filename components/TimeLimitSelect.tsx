@@ -20,10 +20,12 @@ const TimeLimitSelect = () => {
       disabled={gameStatus !== 'idle'}
     >
       <option value={1}>1 Second</option>
-      <option value={2}>2 Second</option>
-      <option value={3}>3 Second</option>
-      <option value={4}>4 Second</option>
-      <option value={5}>5 Second</option>
+      <option value={2}>2 Seconds</option>
+      <option value={3}>3 Seconds</option>
+      <option value={4}>4 Seconds</option>
+      <option value={5}>5 Seconds</option>
+      <option value={7}>5 Seconds</option>
+      <option value={10}>5 Seconds</option>
     </select>
   );
 };
