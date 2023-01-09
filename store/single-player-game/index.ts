@@ -1,11 +1,11 @@
 import create from 'zustand';
-import generateRandomWords from 'random-words';
 import { SPGameStore } from 'store/single-player-game/types';
+import generateRandomWords from 'random-words';
 
 let timer: NodeJS.Timer;
 
 export const useSPGameStore = create<SPGameStore>()((set, get) => ({
-  words: generateRandomWords(3),
+  words: [],
   gameStatus: 'idle',
   currentScore: 0,
   personalTopScore: 0,
@@ -39,6 +39,9 @@ export const useSPGameStore = create<SPGameStore>()((set, get) => ({
   },
   setTimeLimit: (seconds) => {
     set({ timeLimit: seconds, timeLeft: seconds });
+  },
+  setWords: (words) => {
+    set({ words });
   }
 }));
 

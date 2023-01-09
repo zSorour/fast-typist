@@ -11,4 +11,5 @@ export interface SPGameStore {
   stopGame: () => void;
   resetGame: () => void;
   setTimeLimit: (seconds: number) => void;
+  setWords: (words: string[]) => void;
 }
