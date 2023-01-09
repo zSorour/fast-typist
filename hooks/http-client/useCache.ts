@@ -24,7 +24,6 @@ const useCache = <TData>(
     // return cleanup function that unsubscribes
     return () => {
       unsubscribe();
-      console.log('removed listener');
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

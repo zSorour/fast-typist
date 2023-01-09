@@ -15,10 +15,8 @@ const useFetch = <TData>(useFetchParams: UseFetchParams<TData>) => {
 
   const refetch = useCallback(async () => {
     // abort previous request
-    console.log('abortControllersRef.current', abortControllers);
     if (abortControllers.has(cacheKey)) {
       abortControllers.get(cacheKey)?.abort();
-      console.log('aborted previous');
     }
 
     setIsLoading(true);

@@ -23,7 +23,6 @@ class CachedData<TData> implements Observable<TData> {
   }
 
   setData(data: TData) {
-    console.log('called setData', this);
     this._data = data;
     this._timestamp = Date.now();
     this.notify(data);
@@ -40,7 +39,6 @@ class CachedData<TData> implements Observable<TData> {
 
   notify(data: TData) {
     this._listeners.forEach((listener) => listener(data));
-    console.log('called listener');
   }
 }
 

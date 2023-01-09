@@ -16,7 +16,6 @@ class FetchCache {
 
   setCachedData(key: CacheKey, data: any) {
     const cachedData = this._cache.get(key);
-    console.log('Called set cacheddata', this);
     if (cachedData) {
       cachedData.setData(data);
     } else {
