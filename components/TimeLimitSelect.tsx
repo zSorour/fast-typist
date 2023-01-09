@@ -10,8 +10,6 @@ const TimeLimitSelect = () => {
     setTimeLimit(Number(e.target.value));
   };
 
-  console.log(gameStatus);
-
   return (
     <select
       className="form-select font-bold bg-secondary py-2 px-3 rounded-lg w-full hover:cursor-pointer disabled:cursor-not-allowed"
