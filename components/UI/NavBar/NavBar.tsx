@@ -3,10 +3,12 @@ import Logo from '../Logo';
 import NavItem from 'components/UI/NavBar/NavItem';
 import LoginModal from 'components/Login/LoginModal';
 import LoginButton from './LoginButton';
+import useHasMounted from 'hooks/useHasMounted';
 
 const NavBar = () => {
   const isModalOpen = useAuthStore((selector) => selector.isModalOpen);
   const isLoggedIn = useAuthStore((selector) => selector.isLoggedIn);
+  const hasMounted = useHasMounted();
 
   return (
     <>
@@ -15,7 +17,7 @@ const NavBar = () => {
         <ul className="flex">
           <NavItem to="/play">Play</NavItem>
           <NavItem to="/scoreboard">Scoreboard</NavItem>
-          {!isLoggedIn() && <LoginButton />}
+          {!isLoggedIn() && hasMounted && <LoginButton />}
         </ul>
       </nav>
 
