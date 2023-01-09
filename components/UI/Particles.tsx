@@ -1,27 +1,17 @@
 import { useCallback } from 'react';
 import TSParticles from 'react-tsparticles';
-import type { Container, Engine } from 'tsparticles-engine';
+import type { Engine } from 'tsparticles-engine';
 import { loadFull } from 'tsparticles';
 
 const Particles = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    console.log(engine);
-
     await loadFull(engine);
   }, []);
-
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      await console.log(container);
-    },
-    []
-  );
 
   return (
     <TSParticles
       id="tsparticles"
       init={particlesInit}
-      loaded={particlesLoaded}
       options={{
         fullScreen: {
           enable: true,
