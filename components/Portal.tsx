@@ -1,5 +1,4 @@
 import useHasMounted from 'hooks/useHasMounted';
-import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type Props = {
