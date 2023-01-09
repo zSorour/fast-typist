@@ -24,8 +24,8 @@ const TimeLimitSelect = () => {
       <option value={3}>3 Seconds</option>
       <option value={4}>4 Seconds</option>
       <option value={5}>5 Seconds</option>
-      <option value={7}>5 Seconds</option>
-      <option value={10}>5 Seconds</option>
+      <option value={7}>7 Seconds</option>
+      <option value={10}>10 Seconds</option>
     </select>
   );
 };
