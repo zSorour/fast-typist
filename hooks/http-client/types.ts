@@ -21,8 +21,3 @@ export type FetchFunctionContext = {
 };
 
 export type ListenerFunction<TData> = (data: TData) => void;
-
-export interface Observable<TData = unknown> {
-  subscribe: (listener: ListenerFunction<TData>) => () => void;
-  notify: (data: TData) => void;
-}

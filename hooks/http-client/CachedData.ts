@@ -1,17 +1,15 @@
-import { Observable, ListenerFunction } from './types';
+import { EventEmitter } from 'events';
+import { ListenerFunction } from './types';
 
-class CachedData<TData> implements Observable<TData> {
+class CachedData<TData> extends EventEmitter {
   private _data: TData | undefined;
   private _timestamp: number | undefined;
-  private _listeners: ListenerFunction<TData>[];
-
   constructor(data?: TData) {
+    super();
     if (data) {
       this._data = data;
       this._timestamp = Date.now();
     }
-
-    this._listeners = [];
   }
 
   getData() {
@@ -25,20 +23,14 @@ class CachedData<TData> implements Observable<TData> {
   setData(data: TData) {
     this._data = data;
     this._timestamp = Date.now();
-    this.notify(data);
+    this.emit('changed', data);
   }
 
   subscribe(listener: ListenerFunction<TData>) {
-    this._listeners.push(listener);
+    this.addListener('changed', listener);
     return () => {
-      this._listeners = this._listeners.filter(
-        (listernerFn) => listernerFn !== listener
-      );
+      this.removeListener('changed', listener);
     };
-  }
-
-  notify(data: TData) {
-    this._listeners.forEach((listener) => listener(data));
   }
 }
 
