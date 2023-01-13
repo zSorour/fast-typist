@@ -1,4 +1,4 @@
-import PlayOfflinePage from 'components/PlayOfflinePage';
+import PlayOfflinePage from 'components/Practice/PlayOfflinePage';
 import useHasMounted from 'hooks/useHasMounted';
 import { useSPGameStore } from 'store/single-player-game';
 import generateRandomWords from 'random-words';

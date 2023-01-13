@@ -1,4 +1,4 @@
-import Portal from 'components/Portal';
+import Portal from 'components/shared/Portal';
 
 type Props = {
   children: React.ReactNode;

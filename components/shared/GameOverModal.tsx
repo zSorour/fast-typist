@@ -1,10 +1,10 @@
 import { useSPGameStore } from 'store/single-player-game';
-import Backdrop from './UI/Backdrop';
-import ModalBody from './UI/Modal/ModalBody';
-import ModalHeader from './UI/Modal/ModalHeader';
+import Backdrop from '../UI/Backdrop';
+import ModalBody from '../UI/Modal/ModalBody';
+import ModalHeader from '../UI/Modal/ModalHeader';
 import CryingEmoji from 'public/crying-emoji.png';
 import Image from 'next/image';
-import ModalWrapper from './UI/Modal/ModalWrapper';
+import ModalWrapper from '../UI/Modal/ModalWrapper';
 const GameOverModal = () => {
   const gameStatus = useSPGameStore((state) => state.gameStatus);
   const resetGame = useSPGameStore((state) => state.resetGame);

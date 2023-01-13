@@ -1,4 +1,4 @@
-import Word from 'components/Word';
+import Word from 'components/shared/Word';
 import { useSPGameStore } from 'store/single-player-game';
 
 const Words = () => {

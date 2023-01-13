@@ -1,11 +1,11 @@
-import GameScores from 'components/GameScores';
-import Words from 'components/Words';
-import NextWordTimer from 'components/NextWordTimer';
+import GameScores from 'components/shared/GameScores';
+import Words from 'components/shared/Words';
+import NextWordTimer from 'components/shared/NextWordTimer';
 import PageWrapper from 'components/UI/PageWrapper';
-import WordInput from 'components/WordInput';
-import TimeLimitSelect from 'components/TimeLimitSelect';
-import ToggleGameStatusButton from 'components/ToggleGameStatusButton';
-import GameOverModal from './GameOverModal';
+import WordInput from 'components/shared/WordInput';
+import TimeLimitSelect from 'components/shared/TimeLimitSelect';
+import ToggleGameStatusButton from 'components/shared/ToggleGameStatusButton';
+import GameOverModal from '../shared/GameOverModal';
 
 const PlayOfflinePage = () => {
   return (
