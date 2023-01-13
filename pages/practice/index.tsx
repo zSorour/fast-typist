@@ -1,4 +1,4 @@
-import PlayOfflinePage from 'components/Practice/PlayOfflinePage';
+import PracticePage from 'components/Practice/PracticePage';
 import useHasMounted from 'hooks/useHasMounted';
 import { useSPGameStore } from 'store/single-player-game';
 import generateRandomWords from 'random-words';
@@ -10,7 +10,7 @@ const PlayPage = () => {
     setWords(generateRandomWords(3));
   }
 
-  return <PlayOfflinePage />;
+  return <PracticePage />;
 };
 
 export default PlayPage;
