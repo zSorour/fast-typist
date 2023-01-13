@@ -1,25 +1,17 @@
-import { useSPGameStore } from 'store/single-player-game';
+type Props = {
+  gameStatus: 'idle' | 'playing' | 'game-over';
+  onClick: () => void;
+};
 
-const ToggleGameStatusButton = () => {
-  const startGame = useSPGameStore((state) => state.startGame);
-  const stopGame = useSPGameStore((state) => state.stopGame);
-  const gameStatus = useSPGameStore((state) => state.gameStatus);
-
-  let btnColor = gameStatus === 'playing' ? 'bg-red-600' : 'bg-emerald-700';
-  let btnText = gameStatus === 'playing' ? 'Stop' : 'Start';
-
-  const onClickHandler = () => {
-    if (gameStatus === 'playing') {
-      stopGame();
-    } else {
-      startGame();
-    }
-  };
+const ToggleGameStatusButton = (props: Props) => {
+  let btnColor =
+    props.gameStatus === 'playing' ? 'bg-red-600' : 'bg-emerald-700';
+  let btnText = props.gameStatus === 'playing' ? 'Stop' : 'Start';
 
   return (
     <button
       className={`${btnColor} text-white font-bold py-2 px-10 rounded-lg`}
-      onClick={onClickHandler}
+      onClick={props.onClick}
     >
       {btnText}
     </button>
