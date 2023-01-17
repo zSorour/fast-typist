@@ -1,10 +1,10 @@
 import create from 'zustand';
-import { SPGameStore } from 'store/single-player-game/types';
+import { PracticeStore } from 'store/practice-store/types';
 import generateRandomWords from 'random-words';
 
 let timer: NodeJS.Timer;
 
-export const useSPGameStore = create<SPGameStore>()((set, get) => ({
+export const usePracticeStore = create<PracticeStore>()((set, get) => ({
   words: [],
   gameStatus: 'idle',
   currentScore: 0,
@@ -25,6 +25,7 @@ export const useSPGameStore = create<SPGameStore>()((set, get) => ({
     invokeTimer();
   },
   stopGame: () => {
+    clearInterval(timer);
     set({
       gameStatus: 'game-over',
       currentScore: 0,
@@ -52,9 +53,9 @@ const resetTimer = () => {
 
 const invokeTimer = () => {
   timer = setInterval(() => {
-    const state = useSPGameStore.getState();
+    const state = usePracticeStore.getState();
     if (state.gameStatus === 'playing' && state.timeLeft > 1) {
-      useSPGameStore.setState({ timeLeft: state.timeLeft - 1 });
+      usePracticeStore.setState({ timeLeft: state.timeLeft - 1 });
     } else {
       clearInterval(timer);
       state.stopGame();
@@ -63,7 +64,7 @@ const invokeTimer = () => {
 };
 
 const incrementCurrentScore = () =>
-  useSPGameStore.setState((state) => {
+  usePracticeStore.setState((state) => {
     const newScore = state.currentScore + 1;
     if (newScore > state.personalTopScore) {
       return {
@@ -77,7 +78,7 @@ const incrementCurrentScore = () =>
   });
 
 const generateNewWord = () =>
-  useSPGameStore.setState((state) => {
+  usePracticeStore.setState((state) => {
     const newWords = state.words.slice(1);
     newWords.push(generateRandomWords(1)[0]);
     return { words: newWords };

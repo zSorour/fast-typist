@@ -1,4 +1,4 @@
-export interface SPGameStore {
+export interface PracticeStore {
   words: string[];
   gameStatus: 'playing' | 'idle' | 'game-over';
   currentScore: number;
