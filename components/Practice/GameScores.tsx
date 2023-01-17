@@ -1,9 +1,9 @@
-import { useSPGameStore } from 'store/single-player-game';
+import { usePracticeStore } from 'store/practice-store';
 
 const GameScores = () => {
   // TODO: use the practice store instead of the single player game store
-  const currentScore = useSPGameStore((state) => state.currentScore);
-  const personalTopScore = useSPGameStore((state) => state.personalTopScore);
+  const currentScore = usePracticeStore((state) => state.currentScore);
+  const personalTopScore = usePracticeStore((state) => state.personalTopScore);
 
   return (
     <table className="text-center table-fixed w-[100%] rounded-lg overflow-hidden bg-secondary border-collapse md:w-[65%] md:mx-auto">
