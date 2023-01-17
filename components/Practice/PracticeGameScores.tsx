@@ -1,6 +1,6 @@
 import { usePracticeStore } from 'store/practice-store';
 
-const GameScores = () => {
+const PracticeGameScores = () => {
   const currentScore = usePracticeStore((state) => state.currentScore);
   const personalTopScore = usePracticeStore((state) => state.personalTopScore);
 
@@ -21,4 +21,4 @@ const GameScores = () => {
     </table>
   );
 };
-export default GameScores;
+export default PracticeGameScores;
