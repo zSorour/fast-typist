@@ -3,7 +3,7 @@ type Props = {
   onClick: () => void;
 };
 
-const ToggleGameStatusButton = (props: Props) => {
+const PlayButton = (props: Props) => {
   let btnColor =
     props.gameStatus === 'playing' ? 'bg-red-600' : 'bg-emerald-700';
   let btnText = props.gameStatus === 'playing' ? 'Stop' : 'Start';
@@ -17,4 +17,4 @@ const ToggleGameStatusButton = (props: Props) => {
     </button>
   );
 };
-export default ToggleGameStatusButton;
+export default PlayButton;
