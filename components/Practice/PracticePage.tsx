@@ -5,8 +5,13 @@ import PracticeWords from './PracticeWords';
 import PracticeWordInput from './PracticeWordInput';
 import PracticePlayButton from './PracticePlayButton';
 import PracticeTimeLimitSelect from './PracticeTimeLimitSelect';
+import GameOverModal from 'components/shared/GameOverModal';
+import { usePracticeStore } from 'store/practice-store';
 
 const PracticePage = () => {
+  const gameStatus = usePracticeStore((state) => state.gameStatus);
+  const resetGame = usePracticeStore((state) => state.resetGame);
+
   return (
     <PageWrapper>
       <div className="flex flex-col justify-center w-[90%] mx-auto gap-8 p-8 bg-main bg-opacity-60 rounded-3xl md:p-0 md:aspect-square md:w-[50%] 2xl:w-[35%]">
@@ -20,7 +25,7 @@ const PracticePage = () => {
           <PracticePlayButton />
           <PracticeTimeLimitSelect />
         </div>
-        {/* Render <GameOverModal /> specific to Practice Game Mode */}
+        <GameOverModal gameStatus={gameStatus} onClose={resetGame} />
       </div>
     </PageWrapper>
   );
