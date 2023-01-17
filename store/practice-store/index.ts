@@ -1,50 +1,64 @@
 import create from 'zustand';
-import { PracticeStore } from 'store/practice-store/types';
+import { persist } from 'zustand/middleware';
 import generateRandomWords from 'random-words';
+
+import { PracticeStore } from 'store/practice-store/types';
 
 let timer: NodeJS.Timer;
 
-export const usePracticeStore = create<PracticeStore>()((set, get) => ({
-  words: [],
-  gameStatus: 'idle',
-  currentScore: 0,
-  personalTopScore: 0,
-  timeLimit: 3,
-  timeLeft: get()?.timeLimit | 3,
-  validateWordCorrectness: (word: string) => {
-    if (word.toLowerCase() === get().words[0]) {
-      resetTimer();
-      incrementCurrentScore();
-      generateNewWord();
-      return true;
-    }
-    return false;
-  },
-  startGame: () => {
-    set({ gameStatus: 'playing' });
-    invokeTimer();
-  },
-  stopGame: () => {
-    clearInterval(timer);
-    set({
-      gameStatus: 'game-over',
+export const usePracticeStore = create<PracticeStore>()(
+  persist(
+    (set, get) => ({
+      words: [],
+      gameStatus: 'idle',
       currentScore: 0,
-      timeLeft: get().timeLimit,
-      words: generateRandomWords(3)
-    });
-  },
-  resetGame: () => {
-    set({
-      gameStatus: 'idle'
-    });
-  },
-  setTimeLimit: (seconds) => {
-    set({ timeLimit: seconds, timeLeft: seconds });
-  },
-  setWords: (words) => {
-    set({ words });
-  }
-}));
+      personalTopScore: 0,
+      timeLimit: 3,
+      timeLeft: get()?.timeLimit | 3,
+      validateWordCorrectness: (word: string) => {
+        if (word.toLowerCase() === get().words[0]) {
+          resetTimer();
+          incrementCurrentScore();
+          generateNewWord();
+          return true;
+        }
+        return false;
+      },
+      startGame: () => {
+        set({ gameStatus: 'playing' });
+        invokeTimer();
+      },
+      stopGame: () => {
+        clearInterval(timer);
+        set({
+          gameStatus: 'game-over',
+          currentScore: 0,
+          timeLeft: get().timeLimit,
+          words: generateRandomWords(3)
+        });
+      },
+      resetGame: () => {
+        set({
+          gameStatus: 'idle'
+        });
+      },
+      setTimeLimit: (seconds) => {
+        set({ timeLimit: seconds, timeLeft: seconds });
+      },
+      setWords: (words) => {
+        set({ words });
+      }
+    }),
+    {
+      name: 'practice',
+      partialize: (state) => {
+        return {
+          personalTopScore: state.personalTopScore
+        };
+      }
+    }
+  )
+);
 
 const resetTimer = () => {
   clearInterval(timer);
@@ -66,7 +80,7 @@ const invokeTimer = () => {
 const incrementCurrentScore = () =>
   usePracticeStore.setState((state) => {
     const newScore = state.currentScore + 1;
-    if (newScore > state.personalTopScore) {
+    if (newScore > state.personalTopScore!) {
       return {
         currentScore: newScore,
         timeLeft: state.timeLimit,
