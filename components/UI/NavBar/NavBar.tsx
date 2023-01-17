@@ -15,7 +15,7 @@ const NavBar = () => {
       <nav className="flex justify-between items-center px-5 bg-main bg-opacity-70 border-b-4 border-emerald-700 drop-shadow-2xlxl">
         <Logo />
         <ul className="flex">
-          <NavItem to="/practice">Play</NavItem>
+          <NavItem to="/practice">Practice</NavItem>
           <NavItem to="/scoreboard">Scoreboard</NavItem>
           {!isLoggedIn() && hasMounted && <LoginButton />}
         </ul>
