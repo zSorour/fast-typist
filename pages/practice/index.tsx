@@ -1,5 +1,4 @@
 import PracticePage from 'components/Practice/PracticePage';
-import useHasMounted from 'hooks/useHasMounted';
 import { usePracticeStore } from 'store/practice-store';
 import generateRandomWords from 'random-words';
 import { useEffect } from 'react';
