@@ -1,7 +1,7 @@
 import FormError from 'components/UI/Form/FormError';
 import TextInput from 'components/UI/Form/TextInput';
-import useHTTP from 'hooks/useHTTP';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import { FieldValues, useForm } from 'react-hook-form';
 import { useAuthStore } from 'store/authentication';
@@ -10,11 +10,10 @@ const LoginForm = () => {
   const { register, handleSubmit, formState } = useForm();
   const router = useRouter();
   const login = useAuthStore((state) => state.login);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { sendRequest, isLoading, error, response } = useHTTP();
-
-  const loginSubmitHandler = async (formData: FieldValues) => {
-    await sendRequest('http://localhost:5000/auth/login', {
+  const sendLoginRequest = async (formData: FieldValues) => {
+    const response = await fetch('http://localhost:5000/auth/login', {
       method: 'POST',
       body: JSON.stringify({
         username: formData.username,
@@ -24,14 +23,20 @@ const LoginForm = () => {
         'Content-Type': 'application/json'
       }
     });
-
-    if (response?.ok) {
-      const data = await response.json();
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data);
       login(data.username, data.accessToken);
       router.push('/play');
     } else {
-      console.log(error);
+      alert('error login failed');
     }
+  };
+
+  const loginSubmitHandler = async (formData: FieldValues) => {
+    setIsLoading(true);
+    await sendLoginRequest(formData);
+    setIsLoading(false);
   };
 
   return (
