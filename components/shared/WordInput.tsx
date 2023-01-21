@@ -2,7 +2,8 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 type Props = {
   gameStatus: 'idle' | 'playing' | 'game-over';
-  isCorrectWord: (word: string) => boolean;
+  targetWord: string;
+  sendWordInput: (word: string) => void;
 };
 
 const WordInput = (props: Props) => {
@@ -17,11 +18,14 @@ const WordInput = (props: Props) => {
     }
   }, [props.gameStatus]);
 
+  useEffect(() => {
+    setUserInput('');
+  }, [props.targetWord]);
+
   const onInputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
-    const isCorrectWord = props.isCorrectWord(e.target.value);
-    if (isCorrectWord) {
-      setUserInput('');
+    if (e.target.value.length === props.targetWord.length) {
+      props.sendWordInput(e.target.value);
     }
   };
 
