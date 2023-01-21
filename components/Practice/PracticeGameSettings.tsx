@@ -1,4 +1,3 @@
-import GameOverModal from 'components/shared/GameOverModal';
 import PlayButton from 'components/shared/PlayButton';
 import TimeLimitSelect from 'components/shared/TimeLimitSelect';
 import { usePracticeStore } from 'store/practice-store';
@@ -9,7 +8,6 @@ const PracticeGameSettings = () => {
   const gameStatus = usePracticeStore((state) => state.gameStatus);
   const startGame = usePracticeStore((state) => state.startGame);
   const stopGame = usePracticeStore((state) => state.stopGame);
-  const resetGame = usePracticeStore((state) => state.resetGame);
 
   const onPlayBtnClickHandler = () => {
     if (gameStatus === 'playing') {
@@ -33,7 +31,6 @@ const PracticeGameSettings = () => {
         onChange={onTimeLimitChangeHandler}
         gameStatus={gameStatus}
       />
-      <GameOverModal gameStatus={gameStatus} onClose={resetGame} />
     </div>
   );
 };
