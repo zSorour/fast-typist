@@ -8,6 +8,7 @@ import ModalWrapper from '../UI/Modal/ModalWrapper';
 type Props = {
   gameStatus: 'idle' | 'playing' | 'game-over';
   onClose: () => void;
+  score: number;
 };
 
 const GameOverModal = (props: Props) => {
@@ -21,8 +22,9 @@ const GameOverModal = (props: Props) => {
       <ModalWrapper>
         <ModalHeader onClose={props.onClose} />
         <ModalBody>
-          <h1 className="font-bold text-2xl">Game over</h1>
+          <h3 className="font-bold text-2xl">Game Score: {props.score}</h3>
           <Image className="w-[60%]" src={CryingEmoji} alt="Sad Face" />
+          <h3 className="font-bold text-xl">Better luck next time!</h3>
         </ModalBody>
       </ModalWrapper>
     </>
