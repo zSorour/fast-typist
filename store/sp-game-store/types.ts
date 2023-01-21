@@ -23,6 +23,7 @@ export type CorrectWordPayload = {
 export type GameEndedPayload = {
   score: number;
   topScore: number;
+  newWords: string[];
 };
 
 // Client Sent Events

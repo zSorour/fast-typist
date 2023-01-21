@@ -43,6 +43,9 @@ export const useSPGameStore = create<SPGameStore>()((set, get) => ({
       const newWords = [...get().words];
       newWords.shift();
       newWords.push(payload.newWord);
+      if (payload.currentScore >= get().personalTopScore) {
+        set({ personalTopScore: payload.currentScore });
+      }
       set({
         words: newWords,
         currentScore: payload.currentScore,
@@ -56,7 +59,8 @@ export const useSPGameStore = create<SPGameStore>()((set, get) => ({
       set({
         gameStatus: 'game-over',
         currentScore: payload.score,
-        personalTopScore: payload.topScore
+        personalTopScore: payload.topScore,
+        words: payload.newWords
       });
     });
   }
