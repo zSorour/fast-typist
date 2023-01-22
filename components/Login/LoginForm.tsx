@@ -15,6 +15,7 @@ const LoginForm = () => {
   const sendLoginRequest = async (formData: FieldValues) => {
     const response = await fetch('http://localhost:5000/auth/login', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({
         username: formData.username,
         password: formData.password
