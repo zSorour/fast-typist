@@ -8,6 +8,9 @@ export const useAuthStore = create<AuthStore>()(
       username: null,
       accessToken: null,
       isModalOpen: false,
+      setAccessToken: (accessToken: string) => {
+        set({ accessToken });
+      },
       isLoggedIn: () => {
         return get().accessToken != null;
       },

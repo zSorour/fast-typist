@@ -10,11 +10,13 @@ import SPWords from './SPWords';
 import SPWordInput from './SPWordInput';
 import SPGameSettings from './SPGameSettings';
 import { useAuthStore } from 'store/authentication';
+import refreshAccessToken from 'utils/refreshAccessToken';
 
 const SinglePlayerPage = () => {
   const token = useAuthStore((state) => state.accessToken)!;
+  const setAccessToken = useAuthStore((state) => state.setAccessToken);
 
-  const { socket, connectionState } = useSocketIO(
+  const { socket, connectionState, error } = useSocketIO(
     'http://localhost:5000/sp-game',
     token
   );
@@ -27,7 +29,14 @@ const SinglePlayerPage = () => {
       setSocket(socket);
       registerEvents();
     }
-  }, [setSocket, registerEvents, socket]);
+    if (error) {
+      if (error.message === 'Token Expired') {
+        refreshAccessToken().then((newToken: string) => {
+          setAccessToken(newToken);
+        });
+      }
+    }
+  }, [setSocket, setAccessToken, registerEvents, socket, error]);
 
   return (
     <PageWrapper>
