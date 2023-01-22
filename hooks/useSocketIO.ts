@@ -16,13 +16,7 @@ type Connected = {
   isConnected: true;
 };
 
-type Errored = {
-  isLoading: false;
-  isConnected: false;
-  error: Error;
-};
-
-type ConnectionState = Disconnected | Loading | Connected | Errored;
+type ConnectionState = Disconnected | Loading | Connected;
 
 const useSocketIO = <
   StoCEvents extends EventSourceEventMap,
@@ -35,9 +29,10 @@ const useSocketIO = <
     isLoading: false,
     isConnected: false
   });
+  const [error, setError] = useState<Error>();
 
   const clearError = useCallback(() => {
-    setConnectionState({ isLoading: false, isConnected: false });
+    setError(undefined);
   }, []);
 
   const socketRef = useRef<Socket<StoCEvents, CtoSEvents>>();
@@ -60,9 +55,9 @@ const useSocketIO = <
     socketRef.current.on('connect_error', (error: Error) => {
       setConnectionState({
         isLoading: false,
-        isConnected: false,
-        error: error
+        isConnected: false
       });
+      setError(error);
     });
     return () => {
       socketRef.current?.disconnect();
@@ -71,6 +66,7 @@ const useSocketIO = <
 
   return {
     connectionState,
+    error,
     clearError,
     socket: socketRef.current
   };
