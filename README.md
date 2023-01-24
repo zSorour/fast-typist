@@ -36,6 +36,6 @@ Players should be able to view a scoreboard of top scores in different time limi
 ## Demo Screenshots
 
 - Practice Game Mode:
-  ![alt text](https://am3pap007files.storage.live.com/y4mgs5n0Ux9zx6y4oPazBDLxhO85PNvVi-BIl4VCMT_aRsqMCVzKKDFHs_GiCaMLL0sqey5YJMJ4vIIjf6Tf-qabANq_Tv2Ba5seQ8PQofGan1H_Yzr3HZfAGfgFU5-d4mpb1ME1CnpL-mklOCKeJqz3yJVUhUsIPirsrci-XvxkGX-wJ3Yrqi2kSwAE-xs5Wyf?width=1154&height=1004&cropmode=none 'Login Screen')
+  ![alt text](https://am3pap007files.storage.live.com/y4mgs5n0Ux9zx6y4oPazBDLxhO85PNvVi-BIl4VCMT_aRsqMCVzKKDFHs_GiCaMLL0sqey5YJMJ4vIIjf6Tf-qabANq_Tv2Ba5seQ8PQofGan1H_Yzr3HZfAGfgFU5-d4mpb1ME1CnpL-mklOCKeJqz3yJVUhUsIPirsrci-XvxkGX-wJ3Yrqi2kSwAE-xs5Wyf?width=1154&height=1004&cropmode=none 'Practice Game Mode')
 - Login Screen:
   ![alt text](https://am3pap007files.storage.live.com/y4mPL7OqVLQ63S4ldUPlf_YNcFm54wNC1tNl-TXHPVzzO94AzCJj1i6hfi7eaVM6JP5-foeWEdNo-RWnHN9qgtKXUgjwH9dK3TqU4p-7uJv-8qU8D1mZe16QfLSbVu6eFHw8CvFw4lw7X6S9bUmVl1K9x96SzLAbT1CCb3OnQ-Lk0830OLxGGCGjVH-Tqz45xm7?width=1147&height=1000&cropmode=none 'Login Screen')
